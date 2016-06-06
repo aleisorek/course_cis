@@ -9,12 +9,10 @@
     become_method: sudo
     
   - name: create docker directory
-    file: path=~/DevOps/my_docker state=directory mode=0755
+    file: path=/home/ec2-user/DevOps/my_docker state=directory mode=0755
     
   - name: create Dockerfile from Jinga2 template
-    become: yes
-    become_method: sudo
-    template: src=~/DevOps/Dockerfile.j2 dest=~/my_docker/Dockerfile 
+    template: src=/home/ec2-user/DevOps/Dockerfile.j2 dest=/home/ec2-user/DevOps/my_docker/Dockerfile 
     
   - name: create image
-    docker_image: path="/home/ec2-user/dock" name="petclin" state="present" tag="ll" 
+    docker_image: path="/home/ec2-user/DevOps/my_docker/" name="petclin" state="present" tag="ll" 
