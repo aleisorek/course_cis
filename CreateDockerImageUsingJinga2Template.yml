@@ -9,7 +9,7 @@
     become_method: sudo
     
   - name: create docker directory
-      file: path=~/my_docker state=directory mode=0755
+    file: path=~/my_docker state=directory mode=0755
     
   - name: create Dockerfile from Jinga2 template
     become: yes
